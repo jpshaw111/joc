@@ -10,6 +10,14 @@
             <a  href="{{ route('create-job-order-statements') }}" class="btn btn-dark text-white">Generate JOS</a>
             </div>
 
+            
+            @if (session('success'))
+
+            <div class="alert alert-success"> {{ session('success') }}</div>
+              
+            @endif
+            
+
 
 <table class="table table-bordered mt-4">
   <thead class="thead-dark">
@@ -36,9 +44,10 @@
       <td>{{ $row->total_amount }}</td>
       <td>
       <!-- Inline Edit -->
-            <form action="" method="POST" class="d-flex gap-2 align-items-center">
+            <form action="{{ route('jos.update', $row->id) }}" method="POST" class="d-flex gap-2 align-items-center">
                 @csrf @method('PUT')
-                <input type="number" step="0.01" name="paid_amount" class="form-control form-control-sm" value="{{ $row->paid_amount }}" style="width:120px;">
+                
+                <input type="number" step="0.01" name="paid_amount" class="form-control form-control-sm" value="" style="width:120px;" placeholder="{{ $row->paid_amount }}">
                   <button class="btn btn-sm btn-primary">Save</button>
             </form>
       </td>

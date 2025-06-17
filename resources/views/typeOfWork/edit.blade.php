@@ -12,23 +12,39 @@
             </div>
 
             <div class="col-md-12">
-        
+         @if (session('success'))
 
-                <form>
+            <div class="alert alert-success"> {{ session('success') }}</div>
+                
+            @endif
+
+                <form action="{{ route('update-type-of-work') }}" method="POST">
                 @csrf
+                <input type="hidden" name="id" value="{{ $result->id }}">
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" value={{ $result->name }} placeholder="Enter Name">
-                        
+                        <input type="text" class="form-control" name="name" aria-describedby="emailHelp" value={{ $result->name }} placeholder="Enter Name">
+                        @error('name')
+                        <p class="text-danger"><small>{{ $message }}</small></p>
+                            
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Rate</label>
-                        <input type="text" class="form-control" id="rate" value="{{ $result->rate }}" placeholder="i.e 10.00">
+                        <input type="text" class="form-control" name="rate" value="{{ $result->rate }}" placeholder="i.e 10.00">
+                         @error('rate')
+                        <p class="text-danger"><small>{{ $message }}</small></p>
+                            
+                        @enderror
                     </div>
 
                      <div class="form-group">
                         <label>Code</label>
-                        <input type="text" class="form-control" id="code" value="{{ $result->code }}" placeholder="i.e PNT0001">
+                        <input type="text" class="form-control" name="code" value="{{ $result->code }}" placeholder="i.e PNT0001">
+                         @error('code')
+                        <p class="text-danger"><small>{{ $message }}</small></p>
+                            
+                        @enderror
                     </div>
                     
                     <button type="submit" class="btn btn-dark">Update</button>

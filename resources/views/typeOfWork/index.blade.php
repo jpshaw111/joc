@@ -11,24 +11,44 @@
             <a  href="{{ route('listing-type-of-work') }}" class="btn btn-dark text-white">List</a>
             </div>
 
-            <div class="col-md-12">
+            <div class="col-md-12 mt-3 mb-3">
+            
+            @if (session('success'))
+
+            <div class="alert alert-success"> {{ session('success') }}</div>
+                
+            @endif
+            
+            
         
 
-                <form>
+                <form action="{{ route('save-type-of-work') }}" method="POST">
                 @csrf
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter Name">
+                        <input type="text" class="form-control" name="name" aria-describedby="emailHelp" placeholder="Enter Name" value="{{ old('name') }}">
+                        @error('name')
+                        <p class="text-danger"><small>{{ $message }}</small></p>
+                            
+                        @enderror
                         
                     </div>
                     <div class="form-group">
                         <label>Rate</label>
-                        <input type="text" class="form-control" id="rate" placeholder="i.e 10.00">
+                        <input type="text" class="form-control" name="rate" placeholder="i.e 10.00" value="{{ old('rate') }}">
+                         @error('rate')
+                        <p class="text-danger"><small>{{ $message }}</small></p>
+                            
+                        @enderror
                     </div>
 
                      <div class="form-group">
                         <label>Code</label>
-                        <input type="text" class="form-control" id="code" placeholder="i.e PNT0001">
+                        <input type="text" class="form-control" name="code" placeholder="i.e PNT0001" value="{{ old('code') }}">
+                         @error('code')
+                        <p class="text-danger"><small>{{ $message }}</small></p>
+                            
+                        @enderror
                     </div>
                     
                     <button type="submit" class="btn btn-dark">Save</button>

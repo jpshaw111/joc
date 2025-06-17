@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [TypeOfWorkController::class, 'index'])->name('create-type-of-work');
 Route::get('/listing-type-of-work', [TypeOfWorkController::class, 'show'])->name('listing-type-of-work');
 Route::get('/edit-type-of-work/{id}', [TypeOfWorkController::class, 'edit'])->name('edit-type-of-work');
+Route::post('/save-type-of-work', [TypeOfWorkController::class, 'saveTypeofWork'])->name('save-type-of-work');
+Route::post('/update-type-of-work', [TypeOfWorkController::class, 'updateTypeOfWork'])->name('update-type-of-work');
+Route::get('/delete-type-of-work/{id}', [TypeOfWorkController::class, 'deleteTypeOfWork'])->name('delete-type-of-work');
 
 #Contractors
 Route::get('/create-contractors', [ContractorController::class, 'index'])->name('create-contractors');
@@ -33,4 +36,5 @@ Route::get('/create-job-order-statements', [JobOrderStatementController::class, 
 Route::get('/generate-jos', [JobOrderStatementController::class, 'generateJOS'])->name('generate-jos');
 Route::post('/save-job-order-statements', [JobOrderStatementController::class, 'store'])->name('jos.store');
 Route::get('/view-jos', [JobOrderStatementController::class, 'viewJOS'])->name('view-jos');
+Route::put('/jos/{id}/update', [JobOrderStatementController::class, 'updateJOS'])->name('jos.update');
 Route::get('/view-job-orders-by-jos/{id}', [JobOrderStatementController::class, 'viewJobOrderByJOS'])->name('view-job-orders-by-jos');

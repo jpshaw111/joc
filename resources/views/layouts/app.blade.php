@@ -22,67 +22,113 @@
   <body>
 
     <header>
-      <!-- Fixed navbar -->
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">JOS</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto">
-          
-          @if (request()->routeIs('create-type-of-work'))
-          <li class="nav-item active">
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">JOS</a>
+     
+
+      <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+
+          @if (request()->routeIs('create-type-of-work') || request()->routeIs('listing-type-of-work'))
+          <li class="nav-item dropdown active">
              @else
 
-             <li class="nav-item ">
+             <li class="nav-item dropdown">
 
           @endif
+       
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type of Work</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="{{ route('create-type-of-work') }}">Create</a>
+              <a class="dropdown-item" href="{{ route('listing-type-of-work') }}">View</a>
+              
+            </div>
+          </li>
           
+        
             
-              <a class="nav-link" href="{{ route('create-type-of-work') }}">Type of Work</a>
-            </li>
-          @if (request()->routeIs('create-contractors'))
-          <li class="nav-item active">
+            
+          @if (request()->routeIs('create-contractors') || request()->routeIs('listing-contractors'))
+          <li class="nav-item dropdown active">
              @else
 
-             <li class="nav-item ">
+             <li class="nav-item dropdown">
 
           @endif
-              <a class="nav-link" href="{{ route('create-contractors') }}"> Contractors</a>
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contractors</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown02">
+              <a class="dropdown-item" href="{{ route('create-contractors') }}">Create</a>
+              <a class="dropdown-item" href="{{ route('listing-contractors') }}">View</a>
+              
+            </div>
+             
             </li>
-              @if (request()->routeIs('create-conductors'))
-          <li class="nav-item active">
+
+
+              @if (request()->routeIs('create-conductors') || request()->routeIs('listing-conductors'))
+          <li class="nav-item dropdown active">
              @else
 
-             <li class="nav-item ">
+             <li class="nav-item dropdown">
 
           @endif
-              <a class="nav-link" href="{{ route('create-conductors') }}">Conductors</a>
+
+           <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Conductors</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown03">
+              <a class="dropdown-item" href="{{ route('create-conductors') }}">Create</a>
+              <a class="dropdown-item" href="{{ route('listing-conductors') }}">View</a>
+              
+            </div>
+
+
+            
             </li>
 
-                @if (request()->routeIs('create-job-orders'))
-          <li class="nav-item active">
+
+
+
+                @if (request()->routeIs('create-job-orders') || request()->routeIs('listing-job-orders'))
+          <li class="nav-item dropdown active">
              @else
 
-             <li class="nav-item ">
+             <li class="nav-item dropdown">
 
           @endif
-              <a class="nav-link" href="{{ route('create-job-orders') }}">Job Orders</a>
+
+           <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Job Orders</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown04">
+              <a class="dropdown-item" href="{{ route('create-job-orders') }}">Create</a>
+              <a class="dropdown-item" href="{{ route('listing-job-orders') }}">View</a>
+              
+            </div>
+             
             </li>
-             @if (request()->routeIs('create-job-order-statements'))
-          <li class="nav-item active">
+
+
+
+
+             @if (request()->routeIs('create-job-order-statements') || request()->routeIs('view-jos'))
+          <li class="nav-item dropdown active">
              @else
 
-             <li class="nav-item ">
+             <li class="nav-item dropdown">
 
           @endif
-              <a class="nav-link" href="{{ route('create-job-order-statements') }}">JOS</a>
+           <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">JOS</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown04">
+              <a class="dropdown-item" href="{{ route('create-job-order-statements') }}">JOS Management</a>
+              <a class="dropdown-item" href="{{ route('view-jos') }}">View All JOS</a>
+              
+            </div>
+             
             </li>
-          </ul>
-         
-        </div>
-      </nav>
+          
+        </ul>
+        
+      </div>
+    </nav>
+      <!-- Fixed navbar -->
+     
     </header>
 
     <!-- Begin page content -->

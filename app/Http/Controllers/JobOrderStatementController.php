@@ -125,4 +125,17 @@ return redirect( route('create-job-order-statements')."?month=".request('month')
                         ->get();
         return view('job-order-statements.view-job-orders-by-jos', compact('result'));
     }
+
+
+    public function updateJOS(Request $request, $id) {
+        $request->validate([
+            'paid_amount' => 'required',
+        ]);
+
+        $jos = JobOrderStatement::findOrFail($id);
+        $jos->paid_amount       = ($request->paid_amount + $jos->paid_amount);
+        $jos->balance_amount    = ($jos->balance_amount - $request->paid_amount);
+        $jos->update();
+        return back()->with('success', 'JOS updated successfully.');
+    }
 }
